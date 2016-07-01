@@ -18,6 +18,8 @@ class PyTest(TestCommand):
     def run_tests(self):
         # import here, cause outside the eggs aren't loaded
         import pytest
+        self.test_args.append('-rx')
+        self.test_args.append('--runxfail')
         errno = pytest.main(self.test_args)
         raise SystemExit(errno)
 
